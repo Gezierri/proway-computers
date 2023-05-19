@@ -1,0 +1,17 @@
+<h2 class="cart-title">Carrinho</h2>
+<div>
+  <ul>
+    <li *ngFor="let produto of itemProdutos">
+      <img [src]="produto.imagem" alt="" />
+      <p>{{ produto.descricao }}</p>
+      <p>{{ produto.preco | currency : "BRL" }}</p>
+      <label>
+        Quantidade
+        <input type="number" [(ngModel)]="quantidade" />
+      </label>
+      <button class="remove-button" (click)="carrinhoService.removerItem(produto.id)"><i class="fas fa-times"></i></button>
+    </li>
+  </ul>
+  <h2 class="cart-total">Total: {{ getValorTotal() | currency : "BRL" }}</h2>
+  <button class="buy-button">Comprar</button>
+</div>
