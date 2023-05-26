@@ -10,8 +10,13 @@ export class CarrinhoService {
   constructor() {}
 
   public totalCarrinho(): ICarrinho[] {
-    this.produtosCarrinho = JSON.parse(localStorage.getItem('produto') || '');
-    return this.produtosCarrinho;
+    const produto = localStorage.getItem('produto');
+    if (produto) {
+      this.produtosCarrinho = JSON.parse(localStorage.getItem('produto') || '');
+      return this.produtosCarrinho;
+    } else {
+      return [];
+    }
   }
 
   public adicionaCarrinho(produto: ICarrinho) {
@@ -24,9 +29,10 @@ export class CarrinhoService {
     localStorage.clear();
   }
 
-  public removerItem(produtoId: number): void {
-    this.produtosCarrinho = JSON.parse(localStorage.getItem('produto') || '');
-    const novaLista = this.produtosCarrinho.filter((p) => p.id == produtoId);
-    console.log(this.produtosCarrinho);
+  public removerItemCarrinho(produtoId: number) {
+    this.produtosCarrinho = this.produtosCarrinho.filter(
+      (produto) => produto.id !== produtoId
+    );
+    localStorage.setItem('produto', JSON.stringify(this.produtosCarrinho));
   }
 }

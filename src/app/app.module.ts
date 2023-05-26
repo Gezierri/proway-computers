@@ -8,7 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { ProdutosModule } from './produtos/produtos.module';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSnackBarModule} from '@angular/material/snack-bar'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ContatoModule } from './contato/contato.module'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar'
     AppRoutingModule,
     BrowserAnimationsModule,
     ProdutosModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ContatoModule
   ],
   providers: [],
   bootstrap: [AppComponent],

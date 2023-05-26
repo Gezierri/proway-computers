@@ -1,5 +1,5 @@
 <h2 class="cart-title">Carrinho</h2>
-<div>
+<div *ngIf="itemProdutos.length > 0; else semProduto">
   <ul>
     <li *ngFor="let produto of itemProdutos">
       <img [src]="produto.imagem" alt="" />
@@ -7,11 +7,13 @@
       <p>{{ produto.preco | currency : "BRL" }}</p>
       <label>
         Quantidade
-        <input type="number" [(ngModel)]="quantidade" />
+        <input type="number" [(ngModel)]="quantidade" (ngModelChange)="getValorTotal()"/>
       </label>
-      <button class="remove-button" (click)="carrinhoService.removerItem(produto.id)"><i class="fas fa-times"></i></button>
+      <button class="remove-button" (click)="removerItens(produto.id)"><i class="fas fa-times"></i></button>
     </li>
   </ul>
   <h2 class="cart-total">Total: {{ getValorTotal() | currency : "BRL" }}</h2>
-  <button class="buy-button">Comprar</button>
+  <button class="buy-button" (click)="finalizarCompra()">Comprar</button>
 </div>
+
+<ng-template #semProduto>Nenhum produto encontrado</ng-template>
