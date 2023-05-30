@@ -9,7 +9,9 @@ import { ProdutosModule } from './produtos/produtos.module';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { ContatoModule } from './contato/contato.module'
+import { ContatoModule } from './contato/contato.module';
+import { BarraPesquisaComponent } from './barra-pesquisa/barra-pesquisa.component'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { ContatoModule } from './contato/contato.module'
     HeaderComponent,
     FooterComponent,
     PaginaNaoEncontradaComponent,
+    BarraPesquisaComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { ContatoModule } from './contato/contato.module'
     BrowserAnimationsModule,
     ProdutosModule,
     MatSnackBarModule,
-    ContatoModule
+    ContatoModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
